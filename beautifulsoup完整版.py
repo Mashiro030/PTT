@@ -3,16 +3,6 @@ from bs4 import BeautifulSoup
 
 url="https://www.ptt.cc/bbs/PC_Shopping/index.html"
 domain='https://www.ptt.cc'
-for page in range(1,4): #抓取前3頁的路徑 例如:https://www.ptt.cc/bbs/PC_Shopping/index4402.html....
-    r = requests.get(url)
-    soup = BeautifulSoup(r.text,"lxml")
-    btn = soup.select('div.btn-group.btn-group-paging > a')
-    up_page_href = btn[1]['href']
-    next_page_url = domain + up_page_href
-    url = next_page_url
-    # print(url)
-
-url="https://www.ptt.cc/bbs/PC_Shopping/index.html"
 def get_all_href(url):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "lxml")
