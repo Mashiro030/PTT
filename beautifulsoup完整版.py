@@ -36,14 +36,14 @@ def get_article_info(article_url):
         
 for page in range(1,4):
     response = requests.get(url)
-    soup = BeautifulSoup(response.text, "lxml")
+    soup = BeautifulSoup(response.text,"lxml")
     results = soup.select('div.title')
     for item in results:#抓取頁面每一篇文章的連結
         there_is_a_item = item.select_one("a")
         title = item.text
         if there_is_a_item:#確認文章有沒有被刪除
             article_url=there_is_a_item.get('href')
-            get_article_info(article_url=domain+there_is_a_item.get('href'))
+            get_article_info(article_url = domain + there_is_a_item.get('href'))
 
 
 
